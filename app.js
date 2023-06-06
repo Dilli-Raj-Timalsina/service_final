@@ -8,6 +8,7 @@ const allowedOrigins = [
     "http://localhost:3000",
     "https://a-pathshala-service-1-git-b1course-the-gaurav-bhatt.vercel.app",
     "https://www.apluspathshala.com",
+    "http://www.apluspathshala.com",
 ];
 app.use(
     cors({
