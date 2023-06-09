@@ -143,7 +143,7 @@ const forgetControl = catchAsync(async (req, res, next) => {
         email: email,
         subject: "Reset Password A+ pathshala ",
         message: `Your reset OTP is   : ${resetToken}\n
-                   please do not share it with anybody `,
+please do not share it with anybody `,
     };
     //e) send reset password link to the user's email
     await sendMailNormal(options);

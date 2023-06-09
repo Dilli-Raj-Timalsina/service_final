@@ -19,7 +19,7 @@ const sendMailNormal = async (options) => {
         });
         // 2) Define the email options
         const message = {
-            from: "Dilli Raj Timalsina <dillirajtimalsina354@gmail.com>",
+            from: "A Plus Pathshala <apluspathshala@gmail.com>",
             to: options.email,
             subject: options.subject,
             text: options.message,
@@ -48,7 +48,7 @@ const sendMailPayMent = async (options, file) => {
         });
         // 2) Define the email options
         const message = {
-            from: "Dilli Raj Timalsina <dillirajtimalsina354@gmail.com>",
+            from: "A Plus Pathshala <apluspathshala@gmail.com>",
             to: options.email,
             subject: options.subject,
             text: options.message,
