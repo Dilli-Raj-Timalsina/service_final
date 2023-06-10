@@ -23,13 +23,15 @@ const verifyPaymentControl = catchAsync(async (req, res, next) => {
     const paymentName = req.body.name;
     const paymentEmail = req.body.email;
     const paymentContact = req.body.contact;
-    const referalCode = req.body.referalCode || 0;
+    let referalCode = req.body.referalCode || 0;
 
     //verify referal code :
     const codes = process.env.CODE.split(",");
-    if (!codes.find(referalCode)) {
+    console.log(codes);
+    if (!codes.includes(referalCode)) {
         referalCode = 0;
     }
+
     if (!(await User.findOne({ email: req.user.email }))) {
         throw new AppError(
             "User doesnot Exist please signup first before registration",
