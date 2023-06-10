@@ -2,7 +2,7 @@ const AppError = require("../errors/appError");
 const catchAsync = require("../errors/catchAsync");
 const User = require("../models/userSchema");
 const { sendMailNormal, sendMailPayMent } = require("../utils/email");
-
+require("dotenv").config({ path: __dirname + "/.env" });
 //1:) return all user profile information :
 const profileControl = catchAsync(async (req, res, next) => {
     //extract all user Information:
@@ -23,7 +23,13 @@ const verifyPaymentControl = catchAsync(async (req, res, next) => {
     const paymentName = req.body.name;
     const paymentEmail = req.body.email;
     const paymentContact = req.body.contact;
+    const referalCode = req.body.referalCode || 0;
 
+    //verify referal code :
+    const codes = process.env.CODE.split(",");
+    if (!codes.find(referalCode)) {
+        referalCode = 0;
+    }
     if (!(await User.findOne({ email: req.user.email }))) {
         throw new AppError(
             "User doesnot Exist please signup first before registration",
@@ -53,6 +59,7 @@ const verifyPaymentControl = catchAsync(async (req, res, next) => {
          paymentName : ${paymentName} ,
          paymentEmail :${paymentEmail} ,
          paymentContact : ${paymentContact} ,
+         referalCode : ${referalCode}
          from signin with:
          Email :${req.user.email} ,
         `,
