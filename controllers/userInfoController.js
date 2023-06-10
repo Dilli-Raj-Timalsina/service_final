@@ -59,7 +59,7 @@ const verifyPaymentControl = catchAsync(async (req, res, next) => {
          paymentName : ${paymentName} ,
          paymentEmail :${paymentEmail} ,
          paymentContact : ${paymentContact} ,
-         referalCode : ${referalCode}
+         referalCode : ${referalCode},
          from signin with:
          Email :${req.user.email} ,
         `,
